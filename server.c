@@ -39,20 +39,7 @@ void servicePlayers(int player1, int player2)
 		total_score[0] = total_score[0] + received_score;
 		printf("%s : %d",name1,total_score[0]);
 		sleep(1);
-		if(total_score[0]>= max)
-			{
-						strcpy(client_message, "Game over: you won the game");
-						write(player1, client_message, strlen(client_message)+1);
-						strcpy(client_message, "Game over: you lost the game");
-						write(player2, client_message, strlen(client_message)+1);
-						close(player1);
-						close(player2);
-						printf("\n================================================================\n");
-						printf("%s won the game with %d points and %s lost the game by %d points.",name1,total_score[0],name2,(total_score[0]-total_score[1]));
-						printf("\n================================================================\n\n\n\n");
-						printf("Waiting for new players to play a new game....\n");
-						exit(0);
-			}
+		
 		strcpy(client_message, "You can now play");
 		write(player2, client_message, strlen(client_message)+1);//Send client_message to Player2
 		//Player2 Score
@@ -66,6 +53,20 @@ void servicePlayers(int player1, int player2)
 		total_score[1] = total_score[1] + received_score;
 		printf(" | %s : %d\n",name2,total_score[1]);
 		sleep(1);
+		if(total_score[0]>= max)
+		{
+						strcpy(client_message, "Game over: you won the game");
+						write(player1, client_message, strlen(client_message)+1);
+						strcpy(client_message, "Game over: you lost the game");
+						write(player2, client_message, strlen(client_message)+1);
+						close(player1);
+						close(player2);
+						printf("\n================================================================\n");
+						printf("%s won the game with %d points and %s lost the game by %d points.",name1,total_score[0],name2,(total_score[0]-total_score[1]));
+						printf("\n================================================================\n\n");
+						printf("Waiting for new players to play a new game....\n");
+						exit(0);
+		}
 		if(total_score[1]>= max)
 		{
 					strcpy(client_message, "Game over: you won the game");
