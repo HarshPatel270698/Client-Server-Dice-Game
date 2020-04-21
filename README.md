@@ -1,8 +1,7 @@
 # Client-Server-Dice-Game
 * A client-server application on which multiple clients can roll dice and server respond to the client according to their scores.
 * The server process and the client process will run on two different machines and the communication between the two processes is achieved using Sockets.
-* Once any client receives 100 score server declare that client as winner and end the game.
-clients.
+* Once any client receives 100 score server declares that client as winner and stop that game.
 # Instructions
 1. The server must start running before any client, and goes into an infinite loop to wait for other clients.
 2. Run server.c file using gcc server.c command. Call Model for server.c is {Port}
